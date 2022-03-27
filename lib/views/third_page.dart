@@ -188,7 +188,8 @@ class ThirdPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(11.27),
                       color: Colors.white,
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18, vertical: 18),
                     child: const Text(
                       "Tolong pastikan semua pesanan anda sudah benar dan tidak kurang.",
                       style: TextStyle(
@@ -206,7 +207,8 @@ class ThirdPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(55.5),
                       color: const Color(0xff3C7DD9),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18, vertical: 18),
                     child: const Text(
                       "Bayar Sekarang",
                       style: TextStyle(
@@ -215,7 +217,8 @@ class ThirdPage extends StatelessWidget {
                           color: Color(0xffFFFFFF)),
                       textAlign: TextAlign.center,
                     ),
-                  ),const SizedBox(height: 100),
+                  ),
+                  const SizedBox(height: 100),
                 ],
               ),
             ),
@@ -374,14 +377,28 @@ class BuildSlidableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: const ValueKey(0),
-      endActionPane: const ActionPane(
+      endActionPane: ActionPane(
         motion: ScrollMotion(),
         children: [
-          SlidableAction(
-            flex: 1,
-            onPressed: doNothing,
-            foregroundColor: Colors.blue,
-            icon: Icons.delete,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment:CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 30, top: 30),
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  decoration:
+                      const BoxDecoration(shape: BoxShape.circle, color: Colors.blue),
+                  child: Image.asset(
+                    "assets/images/trash.png",
+                    width: 25,
+                    height: 25,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
