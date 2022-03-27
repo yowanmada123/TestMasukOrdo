@@ -1,6 +1,6 @@
 # testmasuk
 
-A new Flutter project.
+Slicing UI Test From ORDO, make 3 e-commerce page.
 
 ## Getting Started
 
