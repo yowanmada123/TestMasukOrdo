@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.testmasuk">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="testmasuk"
+        android:label="Ordo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testmasuk/views/first_page.dart';
 
 import '../controllers/main_controller.dart';
 
@@ -36,19 +35,22 @@ Widget BuildBottomBar(BuildContext context) {
                         height: 20.81,
                       )
                     : Image.asset(
-                      "assets/images/vector_home.png",
-                      width: 20.81,
-                      height: 20.81,
-                    ),
+                        "assets/images/vector_home.png",
+                        width: 20.81,
+                        height: 20.81,
+                      ),
                 Image.asset(
                   "assets/images/Vector2.png",
                   width: 20.81,
                   height: 20.81,
                 ),
-                Image.asset(
-                  "assets/images/Vector3.png",
-                  width: 20.81,
-                  height: 20.81,
+                GestureDetector(
+                  onTap: (){},
+                  child: Image.asset(
+                    "assets/images/Vector3.png",
+                    width: 20.81,
+                    height: 20.81,
+                  ),
                 ),
               ],
             ),

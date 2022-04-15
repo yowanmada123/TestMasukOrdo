@@ -1,40 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:testmasuk/widget/build_bottom_buy.dart';
 import '../controllers/main_controller.dart';
-import '../widget/build_bottom_bar.dart';
 import '../widget/second_page_line.dart';
-import 'third_page.dart';
+import 'cart_page.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({
+class DetailPage extends StatelessWidget {
+  const DetailPage({
     Key? key,
     required this.image,
+    required this.name,
+    required this.firstprice,
+    required this.finalprice,
   }) : super(key: key);
 
   final String image;
+  final String name;
+  final String firstprice;
+  final String finalprice;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
       child: Stack(children: [
+        BuildItemDescription(context),
         BuildItemImage(context),
         BuildTopBar(context),
-        BuildItemDescription(context),
-        BuildBottomBar(context),
+        BuildBottomBuy(context),
       ]),
     ));
   }
 
-  Positioned BuildItemDescription(BuildContext context) {
+  // ignore: non_constant_identifier_names
+  Widget BuildItemDescription(BuildContext context) {
     return Positioned(
-      top: 350,
-      child: Container(
+      top: 320,
+      child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: 500,
         child: SingleChildScrollView(
           child: Container(
-            // height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(60)),
                 color: Color(0xffFF485A)),
@@ -58,9 +64,9 @@ class SecondPage extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  "Tas Gucci",
-                                  style: TextStyle(
+                                Text(
+                                  name,
+                                  style: const TextStyle(
                                       fontSize: 13.87,
                                       fontWeight: FontWeight.w700,
                                       color: Color(0xff47623F)),
@@ -73,7 +79,7 @@ class SecondPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(12.14),
-                                          color: Color(0xffDFAE1D)),
+                                          color: const Color(0xffDFAE1D)),
                                       child: const Center(
                                         child: Text(
                                           "Barang Bekas",
@@ -84,7 +90,7 @@ class SecondPage extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 8.67,
                                     ),
                                     Container(
@@ -93,7 +99,7 @@ class SecondPage extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(12.14),
-                                          color: Color(0xff64A1F4)),
+                                          color: const Color(0xff64A1F4)),
                                       child: const Center(
                                           child: Text(
                                         "Stok 100",
@@ -116,10 +122,10 @@ class SecondPage extends StatelessWidget {
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children: [
                                     Text(
-                                      "Rp. 126.000",
-                                      style: TextStyle(
+                                      "Rp. " + firstprice,
+                                      style: const TextStyle(
                                         fontSize: 15.61,
                                         fontWeight: FontWeight.w700,
                                         color: Color(0xff64A1F4),
@@ -127,8 +133,8 @@ class SecondPage extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "Rp. 100.500",
-                                      style: TextStyle(
+                                      "Rp. " + finalprice,
+                                      style: const TextStyle(
                                           fontSize: 13.01,
                                           fontWeight: FontWeight.w700,
                                           color: Color(0xff3C7DD9)),
@@ -141,7 +147,7 @@ class SecondPage extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       borderRadius:
                                           BorderRadius.circular(18.21),
-                                      color: Color(0xff3C7DD9)),
+                                      color: const Color(0xff3C7DD9)),
                                   child: const Center(
                                       child: Text(
                                     "Diskon 10%",
@@ -224,7 +230,7 @@ class SecondPage extends StatelessWidget {
                             const SizedBox(
                               height: 12.14,
                             ),
-                            Container(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width,
                               height: 110,
                               child: Column(
@@ -299,6 +305,7 @@ class SecondPage extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Container BuildCustomerReview(BuildContext context, String image, String name,
       String time, String star, String comment) {
     return Container(
@@ -384,7 +391,8 @@ class SecondPage extends StatelessWidget {
               height: 29,
               child: Text(
                 comment,
-                style: TextStyle(fontSize: 8.67, color: Color(0xff272727)),
+                style:
+                    const TextStyle(fontSize: 8.67, color: Color(0xff272727)),
               ),
             )
           ],
@@ -393,7 +401,8 @@ class SecondPage extends StatelessWidget {
     );
   }
 
-  Positioned BuildTopBar(BuildContext context) {
+  // ignore: non_constant_identifier_names
+  Widget BuildTopBar(BuildContext context) {
     var controller = Get.put(MainController());
     return Positioned(
       top: 0,
@@ -444,7 +453,7 @@ class SecondPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(ThirdPage());
+                      Get.to(const CartPage());
                     },
                     child: Image.asset(
                       "assets/images/blue_bag.png",
@@ -469,9 +478,10 @@ class SecondPage extends StatelessWidget {
     );
   }
 
-  Positioned BuildItemImage(BuildContext context) {
+  // ignore: non_constant_identifier_names
+  Widget BuildItemImage(BuildContext context) {
     return Positioned(
-        top: 120,
+        top: 80,
         left: 68.5,
         child: SizedBox(
             height: 194.67,

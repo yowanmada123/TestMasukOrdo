@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testmasuk/views/second_page.dart';
+import 'package:testmasuk/views/detail_page.dart';
 
 import '../controllers/main_controller.dart';
 
@@ -9,17 +9,23 @@ class ItemWidget extends StatelessWidget {
     Key? key,
     required this.images,
     required this.warna,
+    required this.name,
+    required this.firstprice,
+    required this.finalprice,
   }) : super(key: key);
 
   final String images;
   final Color warna;
+  final String name;
+  final String firstprice;
+  final String finalprice;
 
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(MainController());
     return GestureDetector(
-      onTap: (){
-        Get.to(SecondPage(image: images));
+      onTap: () {
+        Get.to(DetailPage(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
         controller.isHomePage.value = false;
       },
       child: Stack(children: [
@@ -42,8 +48,8 @@ class ItemWidget extends StatelessWidget {
                     color: warna,
                     borderRadius: BorderRadius.circular(8.67),
                   ),
-                  child:
-                      FittedBox(fit: BoxFit.contain, child: Image.asset(images))),
+                  child: FittedBox(
+                      fit: BoxFit.contain, child: Image.asset(images))),
             ],
           ),
         ),
@@ -98,15 +104,15 @@ class ItemWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text(
-                    "Rp. 6000",
-                    style: TextStyle(
+                  Text(
+                    "Rp. " + firstprice,
+                    style: const TextStyle(
                         decoration: TextDecoration.lineThrough,
                         fontSize: 8.67,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff64A1F4)),
                   ),
-                  const SizedBox(width: 44),
+                  const SizedBox(width: 24),
                   Container(
                     width: 47.68,
                     height: 12.14,
@@ -128,23 +134,23 @@ class ItemWidget extends StatelessWidget {
                 ],
               ),
               Row(
-                children: const [
+                children: [
                   Text(
-                    "Rp. 4500",
-                    style: TextStyle(
+                    "Rp. "+finalprice,
+                    style: const TextStyle(
                         fontSize: 8.67,
                         fontWeight: FontWeight.w500,
                         color: Color(0xff3C7DD9)),
                   ),
                 ],
               ),
-              const SizedBox(height: 0.5),
+              const SizedBox(height: 8),
               Row(
-                children: const [
+                children: [
                   Text(
-                    "Lorem Ipsum",
-                    style: TextStyle(
-                        fontSize: 8.67,
+                    name,
+                    style: const TextStyle(
+                        fontSize: 10,
                         fontWeight: FontWeight.w600,
                         color: Color(0xff000000)),
                   ),
