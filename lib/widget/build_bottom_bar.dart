@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:testmasuk/views/account_page.dart';
 
 import '../controllers/main_controller.dart';
 
@@ -45,7 +46,9 @@ Widget BuildBottomBar(BuildContext context) {
                   height: 20.81,
                 ),
                 GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+                    Get.to(const AccountPage());
+                  },
                   child: Image.asset(
                     "assets/images/Vector3.png",
                     width: 20.81,
